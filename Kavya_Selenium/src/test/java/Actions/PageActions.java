@@ -2,6 +2,8 @@ package Actions;
 
 
 import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.Set;
 
@@ -13,6 +15,8 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+
+
 public class PageActions {
 	
 
@@ -42,7 +46,7 @@ public void LaunchFlipkart() throws Exception {
 driver.get("https://www.flipkart.com/");
 String title =driver.getTitle();
 System.out.println(title);
-this.takeSnapShot(driver, "C:\\Users\\HP\\Selenium_SS\\test1.png") ; 
+this.takeSnapShot(driver, "Login Page") ; 
 JavascriptExecutor j = (JavascriptExecutor)driver;
 if (j.executeScript("return document.readyState").toString().equals("complete")){
    System.out.println("Page has loaded");
@@ -59,13 +63,18 @@ public void Login_Childwindow() throws Exception {
 	WebElement btn=driver.findElement(By.xpath("//button[@class='_2KpZ6l _2doB4z']"));
 	btn.click();
 	Thread.sleep(500);
-	this.takeSnapShot(driver, "C:\\Users\\HP\\Selenium_SS\\test2.png") ;
+	this.takeSnapShot(driver, "Home Page") ;
 	System.out.println("Login Pop Up Closed");
 	driver.close();
 
     }
 
-public static void takeSnapShot(WebDriver webdriver,String fileWithPath) throws Exception{
+public static void takeSnapShot(WebDriver webdriver ,String Imagename) throws Exception{
+	SimpleDateFormat Datim = new SimpleDateFormat("ddMMyyyy_hhmmss");
+	Date date = new Date();
+	String Strda=Datim.format(date);
+	String Filepath = "C:\\Users\\HP\\Selenium_SS\\" + Imagename + "_" + Strda +".png";
+	
 
     //Convert web driver object to TakeScreenshot
 
@@ -77,7 +86,7 @@ public static void takeSnapShot(WebDriver webdriver,String fileWithPath) throws 
 
         //Move image file to new destination
 
-            File DestFile=new File(fileWithPath);
+            File DestFile=new File(Filepath);
 
             //Copy file at destination
 
