@@ -9,7 +9,7 @@ import io.cucumber.testng.CucumberOptions;
 		plugin= { "pretty", 
 				"html:target/cucumber-Report.html", "json:target/report.json" , "junit:target/Cucumber.xml" },
 		//Generates different reports in pretty format
-		tags= "@Flipkart",
+		tags= "@Flipkart_Search",
 		monochrome = true
 		)
 public class TestNGclass extends AbstractTestNGCucumberTests{

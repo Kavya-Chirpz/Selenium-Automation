@@ -10,11 +10,14 @@ import java.util.Set;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 
 public class PageActions {
@@ -65,9 +68,24 @@ public void Login_Childwindow() throws Exception {
 	Thread.sleep(500);
 	this.takeSnapShot(driver, "Home Page") ;
 	System.out.println("Login Pop Up Closed");
-	driver.close();
+	
 
     }
+
+public void search_smartphone() throws Exception {
+	System.out.println("Search Bar is Visible");
+	WebElement Search;
+	WebDriverWait wait=new WebDriverWait(driver, 20);
+	Search = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@class='_3704LK']")));
+	//driver.findElement();
+	Search.click();
+	Search.sendKeys("SmartPhones");
+	//this.takeSnapShot(driver, "Search Text");
+	Search.sendKeys(Keys.ENTER);
+	this.takeSnapShot(driver, "Search Text");
+	driver.close();
+	
+}
 
 public static void takeSnapShot(WebDriver webdriver ,String Imagename) throws Exception{
 	SimpleDateFormat Datim = new SimpleDateFormat("ddMMyyyy_hhmmss");

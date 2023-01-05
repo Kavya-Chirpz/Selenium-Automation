@@ -41,6 +41,11 @@ public class loginsteps {
 
 	}
 	
+	@And("^User search for smartphone$")
+	public void Search_smartphone() throws Exception {
+		actions.search_smartphone();
+	}
+	
 	
 
 	@When("^User Enter the Credentials$")

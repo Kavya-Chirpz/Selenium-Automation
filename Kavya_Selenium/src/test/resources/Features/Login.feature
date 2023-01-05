@@ -13,4 +13,10 @@ Feature: Login Page
     Then Launch the flipkart Webpage
     When User is on Login Page childwindow
   
+   @Flipkart_Search
+   Scenario Outline: Flipkart Smart Phone
+   Given Launch the driver
+   Then Launch the flipkart Webpage
+   When User is on Login Page childwindow
+   And User search for smartphone
    
